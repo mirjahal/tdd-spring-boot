@@ -22,11 +22,8 @@ public class IntegrationTest {
     @Test
     public void givenValidUserIdWhenGetUserByIdThenReturnUser() {
         ResponseEntity<User> responseEntity = testRestTemplate.getForEntity("/users/{id}", User.class, 123);
-        User user = responseEntity.getBody();
 
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-        assertEquals(user.getName(), "José");
-        assertEquals(user.getId(), 123);
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
 }
